@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Rules of the Game — The Millennial Project</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream:   #F5F0E8;
+    --sand:    #E8DFD0;
+    --charcoal:#1C1C1E;
+    --slate:   #3A3A3C;
+    --coral:   #D4614A;
+    --sage:    #7A9E7E;
+    --gold:    #C8A96E;
+    --light:   #FAFAF7;
+    --muted:   #6B6B6B;
+  }
+
+  body {
+    background: #EDEDEA;
+    font-family: 'Inter', sans-serif;
+    color: var(--charcoal);
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .infographic {
+    width: 820px;
+    background: var(--cream);
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--charcoal);
+    padding: 64px 56px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 380px; height: 380px;
+    border-radius: 50%;
+    background: var(--coral);
+    opacity: 0.10;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -50px; left: -30px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.07;
+  }
+  .header-series {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1.08;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+  }
+  .header h1 em {
+    font-style: normal;
+    color: var(--gold);
+  }
+  .header-rule {
+    width: 48px;
+    height: 3px;
+    background: var(--coral);
+    margin: 22px 0;
+    position: relative;
+    z-index: 1;
+  }
+  .header-sub {
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(245,240,232,0.65);
+    line-height: 1.65;
+    max-width: 500px;
+    position: relative;
+    z-index: 1;
+  }
+  .header-brand {
+    margin-top: 32px;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── INTRO BAND ── */
+  .intro-band {
+    background: var(--coral);
+    padding: 28px 56px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .intro-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+  .intro-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.6;
+  }
+  .intro-text strong {
+    font-weight: 700;
+  }
+
+  /* ── SECTION LABEL ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--sand);
+  }
+
+  /* ── PRINCIPLES SECTION ── */
+  .principles-section {
+    padding: 52px 56px;
+    background: var(--light);
+  }
+
+  .principle-card {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 24px;
+    margin-bottom: 36px;
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 28px;
+    border: 1px solid var(--sand);
+    align-items: start;
+  }
+  .principle-card:last-child { margin-bottom: 0; }
+
+  .principle-icon-wrap {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    flex-shrink: 0;
+  }
+  .principle-icon-wrap.coral { background: #FDF0ED; border: 1.5px solid #F0C0B4; }
+  .principle-icon-wrap.gold  { background: #FDF8EF; border: 1.5px solid #E8D8B8; }
+  .principle-icon-wrap.sage  { background: #EDF4F0; border: 1.5px solid #C0D9C5; }
+  .principle-icon-wrap.slate { background: #F2F2F4; border: 1.5px solid #D0D0D8; }
+
+  .principle-number {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .principle-number.coral { color: var(--coral); }
+  .principle-number.gold  { color: #A07840; }
+  .principle-number.sage  { color: #4A7A50; }
+  .principle-number.slate { color: var(--slate); }
+
+  .principle-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .principle-desc {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--slate);
+    margin-bottom: 14px;
+  }
+  .principle-example {
+    background: var(--sand);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--slate);
+  }
+  .principle-example strong {
+    font-weight: 700;
+    color: var(--charcoal);
+  }
+
+  /* ── STATS BAND ── */
+  .stats-band {
+    background: var(--charcoal);
+    padding: 52px 56px;
+  }
+  .stats-band .section-label {
+    color: rgba(245,240,232,0.35);
+  }
+  .stats-band .section-label::after {
+    background: rgba(245,240,232,0.08);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .stat-box {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 28px 20px;
+    text-align: center;
+  }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .stat-number.coral { color: var(--coral); }
+  .stat-number.gold  { color: var(--gold); }
+  .stat-number.sage  { color: var(--sage); }
+  .stat-desc {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(245,240,232,0.55);
+    line-height: 1.55;
+  }
+
+  /* ── MATRIX ── */
+  .matrix-section {
+    padding: 52px 56px;
+    background: var(--sand);
+  }
+  .matrix-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+  .matrix-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+  .matrix-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .matrix-card {
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .matrix-card.lose-lose {
+    background: #FDF0ED;
+    border: 1.5px solid #F0C0B4;
+  }
+  .matrix-card.win-win {
+    background: #EDF4F0;
+    border: 1.5px solid #B8D8BE;
+  }
+  .matrix-card.uncertain {
+    background: #FDF8EF;
+    border: 1.5px solid #E8D8B8;
+  }
+  .matrix-card.trap {
+    background: #F2F2F4;
+    border: 1.5px solid #D0D0D8;
+  }
+  .matrix-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: inline-block;
+  }
+  .matrix-card.lose-lose .matrix-badge { background: #F5C8BE; color: var(--coral); }
+  .matrix-card.win-win  .matrix-badge  { background: #B8D8BE; color: #3A7A42; }
+  .matrix-card.uncertain .matrix-badge { background: #E8D8B8; color: #8A6820; }
+  .matrix-card.trap .matrix-badge      { background: #D0D0D8; color: var(--slate); }
+  .matrix-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+  .matrix-card-desc {
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: var(--slate);
+  }
+
+  /* ── QUOTE BLOCK ── */
+  .quote-section {
+    padding: 56px 56px;
+    background: var(--charcoal);
+    position: relative;
+    overflow: hidden;
+  }
+  .quote-section::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 280px;
+    font-weight: 900;
+    color: rgba(200,169,110,0.08);
+    position: absolute;
+    top: -40px;
+    left: 36px;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1.4;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    max-width: 580px;
+  }
+  .quote-text em {
+    font-style: normal;
+    color: var(--gold);
+  }
+  .quote-attr {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--coral);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── TAKEAWAY SECTION ── */
+  .takeaway-section {
+    padding: 52px 56px;
+    background: var(--light);
+  }
+  .takeaway-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 28px;
+  }
+  .takeaway-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .takeaway-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 20px;
+    background: var(--cream);
+    border-radius: 12px;
+    border: 1px solid var(--sand);
+  }
+  .takeaway-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .takeaway-dot.coral { background: var(--coral); }
+  .takeaway-dot.gold  { background: var(--gold); }
+  .takeaway-dot.sage  { background: var(--sage); }
+  .takeaway-dot.slate { background: var(--slate); }
+  .takeaway-text {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--slate);
+  }
+  .takeaway-text strong {
+    font-weight: 700;
+    color: var(--charcoal);
+    display: block;
+    margin-bottom: 3px;
+    font-size: 13.5px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--charcoal);
+    padding: 28px 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-brand {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .footer-url {
+    font-size: 11px;
+    color: rgba(245,240,232,0.35);
+    letter-spacing: 1px;
+  }
+  .footer-series {
+    font-size: 10px;
+    color: var(--coral);
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="infographic">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-series">Game Theory Series · Article 01</div>
+    <h1>The Rules of the<br><em>Game Nobody</em><br>Told You About</h1>
+    <div class="header-rule"></div>
+    <div class="header-sub">4 principles from game theory that explain why some businesses succeed — and why others collapse doing everything "right"</div>
+    <div class="header-brand">The Millennial Project</div>
+  </div>
+
+  <!-- INTRO BAND -->
+  <div class="intro-band">
+    <div class="intro-icon">♟</div>
+    <div class="intro-text">
+      <strong>Game theory is not just for economists.</strong> It's a map of the invisible dynamics shaping every business decision you make — whether you know the rules or not.
+    </div>
+  </div>
+
+  <!-- 4 PRINCIPLES -->
+  <div class="principles-section">
+    <div class="section-label">Four principles</div>
+
+    <!-- 1. Prisoner's Dilemma -->
+    <div class="principle-card">
+      <div class="principle-icon-wrap coral">⚔️</div>
+      <div>
+        <div class="principle-number coral">Principle 01</div>
+        <div class="principle-title">The Prisoner's Dilemma</div>
+        <div class="principle-desc">When two competitors each act in their own short-term interest, both end up worse off than if they had cooperated. It looks rational. It destroys value.</div>
+        <div class="principle-example">
+          <strong>Real world:</strong> In 1992, American Airlines launched a 50% price cut. Every major carrier matched within 24 hours. The industry logged record losses of <strong>$1.53 billion</strong> — while selling more seats than ever. Every airline made the "logical" move. Every airline lost.
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Nash Equilibrium -->
+    <div class="principle-card">
+      <div class="principle-icon-wrap gold">⚖️</div>
+      <div>
+        <div class="principle-number gold">Principle 02</div>
+        <div class="principle-title">Nash Equilibrium</div>
+        <div class="principle-desc">A situation where no one has any reason to change their strategy — given what everyone else is doing. It looks stable. It is often a trap.</div>
+        <div class="principle-example">
+          <strong>Real world:</strong> Two coffee shops on the same street both run loyalty programs, both advertise constantly, both launch seasonal drinks. Neither can stop while the other continues. The equilibrium is stable. The equilibrium is also exhausting. <strong>The way out: change the game, not your tactics.</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Signaling Theory -->
+    <div class="principle-card">
+      <div class="principle-icon-wrap sage">📡</div>
+      <div>
+        <div class="principle-number sage">Principle 03</div>
+        <div class="principle-title">Signaling Theory</div>
+        <div class="principle-desc">Customers can't directly measure quality before they buy. So they read signals — your pricing, your branding, your client list. Perception is not vanity. It is information.</div>
+        <div class="principle-example">
+          <strong>Real world:</strong> Nobel laureate Michael Spence proved in 1973 that a degree's market value comes not just from knowledge gained, but from the signal of effort it sends. In business: <strong>a designer charging €200/hr often wins over one charging €50 — even if their work is identical.</strong> The price is the signal.
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Repeated Games -->
+    <div class="principle-card">
+      <div class="principle-icon-wrap slate">🔁</div>
+      <div>
+        <div class="principle-number slate">Principle 04</div>
+        <div class="principle-title">Repeated Games &amp; Reputation</div>
+        <div class="principle-desc">When you play the same game with the same people over time, the rules change. Short-term defection becomes expensive. Reputation becomes your most valuable asset.</div>
+        <div class="principle-example">
+          <strong>Real world:</strong> Robert Axelrod's 1984 computer tournaments found the winning strategy was simple: cooperate first, retaliate once if crossed, then forgive. Not aggressive. Not a pushover. <strong>Players who over-delivered early and protected their reputation consistently outperformed everyone else.</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS BAND -->
+  <div class="stats-band">
+    <div class="section-label">By the numbers</div>
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-number coral">$1.53B</div>
+        <div class="stat-desc">Industry losses from the 1992 U.S. airline price war — a textbook prisoner's dilemma</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number gold">1973</div>
+        <div class="stat-desc">Year Spence published his signaling theory — earning a Nobel Prize 28 years later</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number sage">#1</div>
+        <div class="stat-desc">Winning strategy in Axelrod's cooperation tournament: cooperate first, retaliate if crossed, forgive quickly</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DECISION MATRIX -->
+  <div class="matrix-section">
+    <div class="section-label">Which game are you in?</div>
+    <div class="matrix-title">Recognise your situation</div>
+    <div class="matrix-sub">Most business decisions fail not because the strategy was wrong — but because it was the wrong strategy for the game being played.</div>
+    <div class="matrix-grid">
+      <div class="matrix-card lose-lose">
+        <div class="matrix-badge">Danger zone</div>
+        <div class="matrix-card-title">Competing on price</div>
+        <div class="matrix-card-desc">You're probably in a prisoner's dilemma. Both sides lose. Exit through differentiation, not better tactics.</div>
+      </div>
+      <div class="matrix-card win-win">
+        <div class="matrix-badge">Opportunity</div>
+        <div class="matrix-card-title">Building relationships</div>
+        <div class="matrix-card-desc">You're in a repeated game. Reputation compounds. Over-deliver early and play the long game.</div>
+      </div>
+      <div class="matrix-card uncertain">
+        <div class="matrix-badge">Watch your signals</div>
+        <div class="matrix-card-title">Entering a new market</div>
+        <div class="matrix-card-desc">Customers can't judge quality yet. Your price, look, and client list are doing the talking before you do.</div>
+      </div>
+      <div class="matrix-card trap">
+        <div class="matrix-badge">Equilibrium trap</div>
+        <div class="matrix-card-title">Copying competitors</div>
+        <div class="matrix-card-desc">You're in a Nash equilibrium. Nobody wins by playing harder. Find a different game to play entirely.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="quote-section">
+    <div class="quote-text">"The businesses that last aren't necessarily the ones who worked hardest. They're the ones who recognised <em>which game they were in</em> — and chose their moves accordingly."</div>
+    <div class="quote-attr">The Millennial Project · Game Theory Series</div>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="takeaway-section">
+    <div class="section-label">Key takeaways</div>
+    <div class="takeaway-title">What to do with this</div>
+    <div class="takeaway-grid">
+      <div class="takeaway-item">
+        <div class="takeaway-dot coral"></div>
+        <div class="takeaway-text">
+          <strong>Stop competing on price</strong>
+          If you're in a race to the bottom, exit the race. Change the frame of the competition.
+        </div>
+      </div>
+      <div class="takeaway-item">
+        <div class="takeaway-dot gold"></div>
+        <div class="takeaway-text">
+          <strong>Audit your signals</strong>
+          Your pricing, branding and client list send a message before you say a word. Make sure it's the right one.
+        </div>
+      </div>
+      <div class="takeaway-item">
+        <div class="takeaway-dot sage"></div>
+        <div class="takeaway-text">
+          <strong>Play for the long game</strong>
+          In most industries, you'll see the same people again. Every interaction is one move in a longer match.
+        </div>
+      </div>
+      <div class="takeaway-item">
+        <div class="takeaway-dot slate"></div>
+        <div class="takeaway-text">
+          <strong>Name the equilibrium</strong>
+          If you're stuck doing what everyone else does — and it isn't working — that's not a tactics problem. That's a game problem.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">The Millennial Project</div>
+    <div class="footer-series">Game Theory Series · 01 of 10</div>
+    <div class="footer-url">themillennialproject.substack.com</div>
+  </div>
+
+</div>
+</body>
+</html>
